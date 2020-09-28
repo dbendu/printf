@@ -11,16 +11,14 @@ int	ft_aprintf(char **strptr, const char *format, ...)
 {
 	t_print_config	config;
 	va_list			args;
+	int				ret;
 
-	config.appendable = true;
-	config.to_str = true;
-	config.str = malloc(PRINTF_BUFSIZE); // TODO: проверить возврат
-	config.fd = -1;
-	config.max_to_print = INT32_MAX;
-	config.printed = 0;
+	// TODO: инициализировать buffer и appender
+	config = config_init(INT32_MAX, NULL, NULL);
 	va_start(args, format);
-
-	int ret = print_formatted(format, args, config);
-	*strptr = config.str;
+	ret = print_formatted(format, args, config);
+	va_end(args);
+	// TODO: записывать в *strptr результат
+	*strptr = NULL;
 	return (ret);
 }

@@ -5,31 +5,27 @@
 #include <stdbool.h>
 
 /*
- * Вывод может осуществляться в файловый дескриптор или в строку.
- * Это отображает состояние переменной to_str:
- * true — выводится в строку, false — в дескриптор.
+ * max_to_print показывает максимальное кол-во символов, которое
+ * printf может записать в указанное место.
  *
- * appendable используется при работе ft_asprintf и показывает,
- * должен ли ft_printf увеличивать объем строки
- * по мере заполнения.
+ * printed -- сколько символов записано на данный момент
  *
- * max_to_print и printed используются при работе ft_snprintf.
- * max_to_printf показывает максимальное кол-во символов,
- * которое может быть записано в строку.
- * printed — сколько символов записано в данный момент.
+ * buffer -- структура для буферизации
  *
- * str -- указатель на указатель, а не просто указатель,
+ * appender -- структура для вывода результата
+ *
+ * NOTE
+ * buffer и appender пока не реализованы
 */
 typedef struct	s_print_config
 {
-	int			fd;
-	char		*str;
-
 	int			max_to_print;
 	int			printed;
 
-	bool		appendable;
-	bool		to_str;
+	void		*buffer;
+	void		*appender;
 }				t_print_config;
+
+t_print_config	config_init(int max_to_print, void *buffer, void *appender);
 
 #endif

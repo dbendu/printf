@@ -8,15 +8,13 @@ int	ft_snprintf(char *dest, int max, const char *format, ...)
 {
 	t_print_config	config;
 	va_list			args;
+	int				ret;
 
-	config.appendable = false;
-	config.to_str = true;
-	config.str = dest;
-	config.fd = -1;
-	config.max_to_print = max;
-	config.printed = 0;
+	// TODO: инициализировать buffer и appender
+	config = config_init(max, NULL, NULL);
 	va_start(args, format);
-
-	int ret = print_formatted(format, args, config);
+	ret = print_formatted(format, args, config);
 	return (ret);
+
+		(void)dest;
 }

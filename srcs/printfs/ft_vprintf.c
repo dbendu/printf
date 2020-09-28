@@ -8,14 +8,10 @@
 int	ft_vprintf(const char *format, va_list args)
 {
 	t_print_config	config;
+	int				ret;
 
-	config.appendable = false;
-	config.to_str = false;
-	config.str = NULL;
-	config.fd = 1;
-	config.max_to_print = INT32_MAX;
-	config.printed = 0;
-
-	int ret = print_formatted(format, args, config);
+	// TODO: инициализировать buffer и appender
+	config = config_init(INT32_MAX, NULL, NULL);
+	ret = print_formatted(format, args, config);
 	return (ret);
 }
