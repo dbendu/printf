@@ -1,0 +1,6 @@
+#ifndef PRINTF_BUFSIZE_CONST_H
+# define PRINTF_BUFSIZE_CONST_H
+
+# define PRINTF_BUFSIZE		1024
+
+#endif
