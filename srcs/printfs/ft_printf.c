@@ -12,7 +12,7 @@ int	ft_printf(const char *format, ...)
 	int				ret;
 
 	// TODO: инициализировать buffer и appender
-	config = config_init(INT32_MAX, NULL, NULL);
+	config = config_init(INT32_MAX, NULL, appender_create(NULL, PRINTF));
 	va_start(args, format);
 	ret = print_formatted(format, args, config);
 	va_end(args);

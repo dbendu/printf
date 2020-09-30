@@ -2,7 +2,7 @@
 
 #include "print_config.h"
 
-t_print_config	config_init(int max_to_print, void *buffer, void *appender)
+t_print_config	config_init(int max_to_print, void *buffer, t_appender appender)
 {
 	t_print_config config;
 

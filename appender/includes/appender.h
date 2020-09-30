@@ -1,10 +1,12 @@
 #ifndef PRINTF_APPENDER_H
 #define PRINTF_APPENDER_H
 
-struct		s_appender
+#include "output_api.h"
+
+struct			s_appender
 {
-	void	*dest;
-	void	(*append)(const char *src, int bytes, void *dest);
+	t_output	dest;
+	void		(*append)(const char *src, int bytes, t_output dest);
 };
 
 #endif

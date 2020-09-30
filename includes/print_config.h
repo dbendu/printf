@@ -4,6 +4,8 @@
 #include <stdarg.h>
 #include <stdbool.h>
 
+#include "appender_api.h"
+
 /*
  * max_to_print показывает максимальное кол-во символов, которое
  * printf может записать в указанное место.
@@ -23,9 +25,9 @@ typedef struct	s_print_config
 	int			printed;
 
 	void		*buffer;
-	void		*appender;
+	t_appender	appender;
 }				t_print_config;
 
-t_print_config	config_init(int max_to_print, void *buffer, void *appender);
+t_print_config	config_init(int max_to_print, void *buffer, t_appender appender);
 
 #endif
