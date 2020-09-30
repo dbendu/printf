@@ -3,7 +3,7 @@
 #include "buffer_api.h"
 #include "buffer.h"
 
-t_buffer	buf_create(void *appender)
+t_buffer	buf_create(t_appender appender)
 {
 	t_buffer	buffer;
 

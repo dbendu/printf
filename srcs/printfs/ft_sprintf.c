@@ -32,8 +32,8 @@ static t_buffer buffer_init(char *str)
 	t_appender appender;
 	t_output output;
 
-	output = output_str_create(str, SPRINTF);
-	appender = appender_create(output);
+	output = output_str_create(str);
+	appender = appender_create(output, SPRINTF);
 	buffer = buf_create(appender);
 	return buffer;
 }

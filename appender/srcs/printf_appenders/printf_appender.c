@@ -2,7 +2,7 @@
 
 #include "printf_appenders.h"
 
-void	printf_appender(const char *src, int bytes, void *dest)
+void	printf_appender(const char *src, int bytes, t_output dest)
 {
 	(void)src;
 	(void)bytes;

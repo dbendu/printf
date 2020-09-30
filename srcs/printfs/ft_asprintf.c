@@ -32,8 +32,8 @@ static t_buffer buffer_init()
 	t_appender appender;
 	t_output output;
 
-	output = output_str_create(NULL, ASPRINTF);
-	appender = appender_create(output);
+	output = output_str_create(NULL);
+	appender = appender_create(output, ASPRINTF);
 	buffer = buf_create(appender);
 	return buffer;
 }

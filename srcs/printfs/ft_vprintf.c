@@ -16,7 +16,7 @@ int	ft_vprintf(const char *format, va_list args)
 	int				ret;
 
 	// TODO: инициализировать buffer и appender
-	config = config_init(INT32_MAX, NULL, appender_init());
+	config = config_init(INT32_MAX, buffer_init());
 	ret = print_formatted(format, args, config);
 	return (ret);
 }
@@ -28,7 +28,7 @@ static t_buffer buffer_init()
 	t_output output;
 
 	output = output_fd_create(1);
-	appender = appender_create(output);
+	appender = appender_create(output, VPRINTF);
 	buffer = buf_create(appender);
 	return buffer;
 }
