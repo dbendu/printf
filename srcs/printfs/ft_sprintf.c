@@ -5,8 +5,10 @@
 #include "print_config.h"
 #include "print_formatted.h"
 #include "output_api.h"
+#include "appender_api.h"
+#include "buffer_api.h"
 
-static t_appender appender_init();
+static t_buffer buffer_init(char *str);
 
 int	ft_sprintf(char *dest, const char *format, ...)
 {
@@ -15,7 +17,7 @@ int	ft_sprintf(char *dest, const char *format, ...)
 	int				ret;
 
 	// TODO: инициализировать buffer и appender
-	config = config_init(INT32_MAX, NULL, appender_create(NULL, VPRINTF));
+	config = config_init(INT32_MAX, buffer_init(dest));
 	va_start(args, format);
 	ret = print_formatted(format, args, config);
 	va_end(args);
@@ -24,11 +26,14 @@ int	ft_sprintf(char *dest, const char *format, ...)
 		(void)dest;
 }
 
-static t_appender appender_init(char *dest_str)
+static t_buffer buffer_init(char *str)
 {
+	t_buffer buffer;
 	t_appender appender;
 	t_output output;
 
-	output = output_str_create(dest_str);
-	appender = appender_create(output, SPRINTF);
+	output = output_str_create(str, SPRINTF);
+	appender = appender_create(output);
+	buffer = buf_create(appender);
+	return buffer;
 }

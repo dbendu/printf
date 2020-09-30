@@ -5,8 +5,10 @@
 #include "print_config.h"
 #include "print_formatted.h"
 #include "output_api.h"
+#include "appender_api.h"
+#include "buffer_api.h"
 
-static t_appender appender_init();
+static t_buffer buffer_init();
 
 int	ft_vprintf(const char *format, va_list args)
 {
@@ -19,12 +21,14 @@ int	ft_vprintf(const char *format, va_list args)
 	return (ret);
 }
 
-static t_appender appender_init()
+static t_buffer buffer_init()
 {
+	t_buffer buffer;
 	t_appender appender;
 	t_output output;
 
 	output = output_fd_create(1);
-	appender = appender_create(output, VPRINTF);
-	return appender;
+	appender = appender_create(output);
+	buffer = buf_create(appender);
+	return buffer;
 }

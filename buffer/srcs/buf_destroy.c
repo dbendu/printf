@@ -5,5 +5,6 @@
 
 void	buf_destroy(t_buffer buffer)
 {
+	appender_destroy(buffer->appender);
 	free(buffer);
 }
